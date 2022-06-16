@@ -267,11 +267,11 @@ class Process:
             try:
                 if self._shell.is_remote:
                     # Support remote Posix so far
-                    self._process.send_signal(9)
+                    self._process.send_signal(15)
                 else:
                     # local process should use the compiled value
                     # the value is different between windows and posix
-                    self._process.send_signal(signal.SIGTERM)
+                    self._process.send_signal(signal.SIGKILL)
             except Exception as identifier:
                 self._log.debug(f"failed on killing process: {identifier}")
 
